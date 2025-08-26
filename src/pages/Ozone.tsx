@@ -97,7 +97,7 @@ const Ozone = () => {
                       <div className="text-xs text-muted-foreground">Accuracy</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-primary">< 100ms</div>
+                      <div className="text-2xl font-bold text-primary">&lt; 100ms</div>
                       <div className="text-xs text-muted-foreground">Latency</div>
                     </div>
                     <div>
