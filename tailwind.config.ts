@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -195,6 +194,64 @@ export default {
 					to: {
 						transform: 'rotate(360deg)'
 					}
+				},
+				'neural-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px hsl(var(--brand-cyan) / 0.3), 0 0 40px hsl(var(--mystical) / 0.2)',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px hsl(var(--brand-cyan) / 0.5), 0 0 60px hsl(var(--mystical) / 0.4), 0 0 90px hsl(var(--brand-purple) / 0.2)',
+						transform: 'scale(1.02)'
+					}
+				},
+				'data-flow': {
+					'0%': {
+						backgroundPosition: '0% 0%'
+					},
+					'100%': {
+						backgroundPosition: '200% 0%'
+					}
+				},
+				'ai-thinking': {
+					'0%, 100%': {
+						opacity: '0.6',
+						transform: 'rotate(0deg) scale(1)'
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'rotate(180deg) scale(1.1)'
+					}
+				},
+				'matrix-rain': {
+					'0%': {
+						transform: 'translateY(-100vh)',
+						opacity: '0'
+					},
+					'10%': {
+						opacity: '1'
+					},
+					'90%': {
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateY(100vh)',
+						opacity: '0'
+					}
+				},
+				'quantum-float': {
+					'0%, 100%': {
+						transform: 'translate3d(0, 0, 0) rotate(0deg)'
+					},
+					'25%': {
+						transform: 'translate3d(-10px, -10px, 0) rotate(90deg)'
+					},
+					'50%': {
+						transform: 'translate3d(0, -20px, 0) rotate(180deg)'
+					},
+					'75%': {
+						transform: 'translate3d(10px, -10px, 0) rotate(270deg)'
+					}
 				}
 			},
 			animation: {
@@ -210,7 +267,12 @@ export default {
 				'slide-in-up': 'slide-in-up 0.6s ease-out forwards',
 				'slide-in-left': 'slide-in-left 0.6s ease-out forwards',
 				'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
-				'rotate-glow': 'rotate-glow 20s linear infinite'
+				'rotate-glow': 'rotate-glow 20s linear infinite',
+				'neural-pulse': 'neural-pulse 3s ease-in-out infinite',
+				'data-flow': 'data-flow 4s linear infinite',
+				'ai-thinking': 'ai-thinking 2s ease-in-out infinite',
+				'matrix-rain': 'matrix-rain 8s linear infinite',
+				'quantum-float': 'quantum-float 6s ease-in-out infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -220,6 +282,10 @@ export default {
 				'professional-lg': '0 20px 50px -10px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.08)',
 				'mystical': '0 20px 50px -10px rgba(124, 77, 255, 0.3), 0 10px 20px -5px rgba(124, 77, 255, 0.1)',
 				'glow': '0 0 30px rgba(0, 180, 255, 0.3), 0 0 60px rgba(0, 180, 255, 0.1)',
+				'neural': '0 25px 50px rgba(0, 180, 255, 0.15), 0 0 100px rgba(124, 77, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+			},
+			backdropBlur: {
+				'xs': '2px',
 			}
 		}
 	},
