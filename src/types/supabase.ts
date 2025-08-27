@@ -43,6 +43,7 @@ export interface BenchmarkSuite {
   category: "reasoning" | "language" | "vision" | "multimodal";
   difficulty_level?: number;
   total_tests: number;
+  source_link?: string | null;
   created_at?: string;
   updated_at?: string;
 }
@@ -72,4 +73,21 @@ export interface AccessRequest {
   status?: "pending" | "approved" | "rejected";
   created_at?: string;
   updated_at?: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  content?: string | null;
+  author_id?: string | null;
+  status: "draft" | "published";
+  published_at?: string | null;
+  featured_image?: string | null;
+  tags?: string[] | null;
+  metadata?: any;
+  created_at?: string;
+  updated_at?: string;
+  author?: { name?: string | null } | null;
 }

@@ -24,7 +24,7 @@ const Benchmarks = () => {
       const { data, error } = await sb
         .from('benchmark_suites')
         .select('*')
-        .order('title');
+        .order('name');
       if (error) throw error;
       return (data || []) as BenchmarkSuite[];
     }
@@ -38,7 +38,7 @@ const Benchmarks = () => {
         .from('benchmark_results')
         .select(`
           *,
-          suite:benchmark_suites(title, slug)
+          suite:benchmark_suites(name, category)
         `)
         .order('created_at', { ascending: false });
 
@@ -51,7 +51,7 @@ const Benchmarks = () => {
       }
 
       if (searchTerm) {
-        query = query.or(`task_name.ilike.%${searchTerm}%,metric_name.ilike.%${searchTerm}%`);
+        query = query.or(`metric_name.ilike.%${searchTerm}%`);
       }
 
       const { data, error } = await query;
@@ -143,7 +143,7 @@ const Benchmarks = () => {
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
-                    placeholder="Search tasks or metrics..."
+                    placeholder="Search metrics..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10 glass"
@@ -158,7 +158,7 @@ const Benchmarks = () => {
                     <SelectItem value="all">All Suites</SelectItem>
                     {suites?.map((suite) => (
                       <SelectItem key={suite.id} value={suite.id}>
-                        {suite.title}
+                        {suite.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -193,7 +193,6 @@ const Benchmarks = () => {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Suite</TableHead>
-                      <TableHead>Task</TableHead>
                       <TableHead>Metric</TableHead>
                       <TableHead>Score</TableHead>
                       <TableHead>Units</TableHead>
@@ -205,15 +204,14 @@ const Benchmarks = () => {
                     {results.map((result) => (
                       <TableRow key={result.id}>
                         <TableCell className="font-medium">
-                          {result.suite?.title || 'Unknown'}
+                          {result.suite?.name || 'Unknown'}
                         </TableCell>
-                        <TableCell>{result.task_name}</TableCell>
                         <TableCell>{result.metric_name}</TableCell>
                         <TableCell className="font-semibold text-secondary">
                           {Number(result.value).toFixed(1)}
                         </TableCell>
-                        <TableCell>{result.units}</TableCell>
-                        <TableCell>{new Date(result.date).toLocaleDateString()}</TableCell>
+                        <TableCell>{result.unit || '%'}</TableCell>
+                        <TableCell>{result.test_date ? new Date(result.test_date).toLocaleDateString() : 'N/A'}</TableCell>
                         <TableCell>
                           {result.is_verified ? (
                             <Badge className="glass text-xs" variant="default">
@@ -254,19 +252,20 @@ const Benchmarks = () => {
             {suites?.map((suite) => (
               <Card key={suite.id} className="glass glass-hover">
                 <CardHeader>
-                  <CardTitle className="text-lg">{suite.title}</CardTitle>
+                  <CardTitle className="text-lg">{suite.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4 text-sm">
-                    {suite.description}
+                    {suite.description || 'Comprehensive benchmark suite for AI evaluation'}
                   </p>
-                  {suite.source_link && (
-                    <Button asChild variant="outline" size="sm" className="glass">
-                      <a href={suite.source_link} target="_blank" rel="noopener noreferrer">
-                        View Source
-                      </a>
-                    </Button>
-                  )}
+                  <div className="flex items-center justify-between">
+                    <Badge className="glass text-xs" variant="secondary">
+                      {suite.category}
+                    </Badge>
+                    <span className="text-sm text-muted-foreground">
+                      {suite.total_tests} tests
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             ))}
