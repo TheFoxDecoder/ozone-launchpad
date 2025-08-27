@@ -1,48 +1,75 @@
 
 export interface Profile {
   id: string;
-  name: string | null;
-  role?: "admin" | "editor" | "viewer";
+  user_id: string;
+  company_id?: string | null;
+  first_name?: string | null;
+  last_name?: string | null;
+  email?: string | null;
+  role?: "admin" | "user";
+  avatar_url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface Company {
+  id: string;
+  name: string;
+  description?: string | null;
+  website?: string | null;
+  logo_url?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface OzoneModel {
+  id: string;
+  name: string;
+  version: string;
+  description?: string | null;
+  model_type: "neural" | "neuromorphic" | "eve-cycle";
+  performance_score?: number | null;
+  energy_efficiency?: number | null;
+  training_data_size?: number | null;
+  is_active?: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface BenchmarkSuite {
   id: string;
-  slug: string;
-  title: string;
+  name: string;
   description?: string | null;
-  source_link?: string | null;
+  category: "reasoning" | "language" | "vision" | "multimodal";
+  difficulty_level?: number;
+  total_tests: number;
   created_at?: string;
   updated_at?: string;
 }
 
 export interface BenchmarkResult {
   id: string;
+  model_id: string;
   suite_id: string;
-  task_name: string;
   metric_name: string;
-  value: number | string;
-  units?: string | null;
-  date: string; // ISO date string
-  notes?: string | null;
-  artifact_url?: string | null;
-  is_verified: boolean;
-  tags?: string[];
+  value: number;
+  unit?: string | null;
+  test_date?: string;
+  is_verified?: boolean;
+  metadata?: any;
   created_at?: string;
-  updated_at?: string;
-  suite?: { title?: string | null; slug?: string | null } | null;
+  model?: { name?: string | null; version?: string | null } | null;
+  suite?: { name?: string | null; category?: string | null } | null;
 }
 
-export interface BlogPost {
+export interface AccessRequest {
   id: string;
-  title: string;
-  slug: string;
-  excerpt?: string | null;
-  content: string;
-  cover_image?: string | null;
-  author_id: string;
-  published_at?: string | null;
-  status: "draft" | "scheduled" | "published";
+  name: string;
+  email: string;
+  company?: string | null;
+  message?: string | null;
+  request_type?: "api" | "partnership" | "research" | "general";
+  status?: "pending" | "approved" | "rejected";
   created_at?: string;
   updated_at?: string;
-  author?: { name?: string | null } | null;
 }
