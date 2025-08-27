@@ -5,14 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, Clock, User, PenTool } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { sb } from "@/integrations/supabase/unsafeClient";
+import type { BlogPost } from "@/types/supabase";
 
 const Blog = () => {
   // Fetch published blog posts
-  const { data: posts, isLoading } = useQuery({
+  const { data: posts, isLoading } = useQuery<BlogPost[]>({
     queryKey: ['blog-posts'],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await sb
         .from('blog_posts')
         .select(`
           *,
@@ -22,7 +23,7 @@ const Blog = () => {
         .order('published_at', { ascending: false });
       
       if (error) throw error;
-      return data || [];
+      return (data || []) as BlogPost[];
     }
   });
 
