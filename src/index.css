@@ -14,6 +14,11 @@
     --accent: 260 60% 55%; /* #7C4DFF - Purple accent from logo */
     --accent-foreground: 0 0% 98%;
     
+    /* Enhanced mystical purple variations */
+    --mystical: 268 85% 45%; /* Deep mystical purple */
+    --mystical-light: 270 70% 65%; /* Lighter mystical purple */
+    --mystical-dark: 265 90% 35%; /* Darker mystical purple */
+    
     /* Additional brand colors from logo gradient */
     --brand-navy: 220 90% 20%; /* #051F3E - Darkest blue */
     --brand-cyan: 195 100% 65%; /* #00B4FF - Bright cyan */
@@ -64,6 +69,7 @@
   body {
     @apply bg-background text-foreground font-['Inter'] antialiased;
     min-height: 100vh;
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -72,20 +78,24 @@
 }
 
 @layer components {
-  /* Professional glass effects */
+  /* Enhanced professional glass effects */
   .glass {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-lg;
+    @apply backdrop-blur-md bg-white/85 border border-white/30 shadow-xl;
   }
   
   .glass-dark {
-    @apply backdrop-blur-sm bg-slate-900/80 border border-slate-700/50 shadow-xl;
+    @apply backdrop-blur-md bg-slate-900/85 border border-slate-700/50 shadow-2xl;
   }
   
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-white/90 hover:border-white/30 hover:shadow-xl;
+    @apply transition-all duration-500 hover:bg-white/95 hover:border-white/40 hover:shadow-2xl hover:scale-[1.02];
   }
   
-  /* Professional gradients based on logo */
+  .glass-mystical {
+    @apply backdrop-blur-lg bg-gradient-to-br from-white/90 via-purple-50/80 to-indigo-50/70 border border-purple-200/50 shadow-xl shadow-purple-500/10;
+  }
+  
+  /* Enhanced professional gradients based on logo */
   .gradient-text {
     @apply bg-gradient-to-r from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent;
   }
@@ -94,8 +104,16 @@
     @apply bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple bg-clip-text text-transparent;
   }
   
+  .gradient-mystical {
+    @apply bg-gradient-to-r from-mystical-dark via-brand-purple to-mystical-light bg-clip-text text-transparent;
+  }
+  
   .gradient-bg {
     @apply bg-gradient-to-br from-brand-navy/5 via-brand-blue/5 to-brand-cyan/5;
+  }
+  
+  .gradient-mystical-bg {
+    @apply bg-gradient-to-br from-mystical/5 via-brand-purple/8 to-brand-cyan/5;
   }
   
   .gradient-border {
@@ -106,39 +124,265 @@
     @apply content-[''] absolute inset-[1px] bg-background rounded-[calc(0.5rem-1px)];
   }
   
-  /* Professional hero section */
-  .hero-bg {
-    background: linear-gradient(135deg, 
-      hsl(var(--brand-navy)/.03) 0%, 
-      hsl(var(--brand-blue)/.05) 35%, 
-      hsl(var(--brand-cyan)/.03) 100%);
+  .gradient-mystical-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-mystical-dark before:via-brand-purple before:to-mystical-light before:rounded-lg before:animate-pulse-glow;
   }
   
-  /* Professional shadows */
+  .gradient-mystical-border::after {
+    @apply content-[''] absolute inset-[1px] bg-background rounded-[calc(0.5rem-1px)];
+  }
+  
+  /* Enhanced hero section */
+  .hero-bg {
+    background: 
+      radial-gradient(circle at 20% 80%, hsl(var(--mystical)/.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--brand-cyan)/.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(var(--brand-purple)/.04) 0%, transparent 50%),
+      linear-gradient(135deg, 
+        hsl(var(--brand-navy)/.03) 0%, 
+        hsl(var(--brand-blue)/.05) 35%, 
+        hsl(var(--brand-cyan)/.03) 100%);
+  }
+  
+  /* Enhanced professional shadows with mystical touches */
   .shadow-professional {
-    @apply shadow-lg shadow-slate-200/50;
+    @apply shadow-xl shadow-slate-200/60;
   }
   
   .shadow-professional-dark {
-    @apply shadow-xl shadow-slate-900/25;
+    @apply shadow-2xl shadow-slate-900/30;
+  }
+  
+  .shadow-mystical {
+    @apply shadow-2xl shadow-purple-500/20;
+  }
+  
+  .shadow-glow {
+    @apply shadow-2xl shadow-brand-cyan/30;
+  }
+  
+  /* Interactive hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-500 hover:shadow-2xl hover:shadow-brand-cyan/40;
+  }
+  
+  .hover-mystical {
+    @apply transition-all duration-500 hover:shadow-2xl hover:shadow-mystical/30 hover:border-mystical/30;
   }
 }
 
-/* Professional animations */
+/* Enhanced professional animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-8px) rotate(1deg); 
+  }
+  66% { 
+    transform: translateY(-4px) rotate(-1deg); 
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(8px) rotate(-1deg); 
+  }
+  66% { 
+    transform: translateY(4px) rotate(1deg); 
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.02);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.8;
+    filter: blur(0px);
+  }
+  50% { 
+    opacity: 1;
+    filter: blur(2px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes mystical-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--mystical)/.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--mystical)/.5), 0 0 60px hsl(var(--brand-purple)/.3);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate-glow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
 }
 
 .animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--brand-cyan)/.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-mystical-pulse {
+  animation: mystical-pulse 4s ease-in-out infinite;
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-rotate-glow {
+  animation: rotate-glow 20s linear infinite;
+}
+
+/* Staggered animation delays */
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Mystical text effects */
+.text-mystical {
+  color: hsl(var(--mystical));
+}
+
+.text-mystical-light {
+  color: hsl(var(--mystical-light));
+}
+
+.text-mystical-dark {
+  color: hsl(var(--mystical-dark));
+}
+
+/* Enhanced backgrounds */
+.bg-mystical {
+  background-color: hsl(var(--mystical));
+}
+
+.bg-mystical-light {
+  background-color: hsl(var(--mystical-light));
+}
+
+.bg-mystical-dark {
+  background-color: hsl(var(--mystical-dark));
+}
+
+/* Border colors */
+.border-mystical {
+  border-color: hsl(var(--mystical));
+}
+
+.border-mystical-light {
+  border-color: hsl(var(--mystical-light));
 }
