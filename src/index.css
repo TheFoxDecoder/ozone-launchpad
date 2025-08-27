@@ -6,40 +6,54 @@
 
 @layer base {
   :root {
-    /* LEAP Brand Colors */
-    --primary: 210 56% 26%; /* #1d3d6b - deep blue */
+    /* Professional LEAP Brand Colors - Based on Logo */
+    --primary: 215 85% 27%; /* #0B4F8C - Deep blue from logo */
     --primary-foreground: 0 0% 98%;
-    --secondary: 197 74% 61%; /* #46c1eb - sky blue */
-    --secondary-foreground: 210 56% 26%;
-    --accent: 197 69% 46%; /* #16a4d7 - cyan */
+    --secondary: 195 100% 65%; /* #00B4FF - Bright cyan from logo */
+    --secondary-foreground: 215 85% 27%;
+    --accent: 260 60% 55%; /* #7C4DFF - Purple accent from logo */
     --accent-foreground: 0 0% 98%;
     
-    /* Additional brand colors */
-    --teal-blue: 204 62% 37%; /* #1c6a9f */
-    --indigo: 252 28% 54%; /* #74619c */
-    --dark-bg: 218 45% 13%; /* #122241 */
+    /* Additional brand colors from logo gradient */
+    --brand-navy: 220 90% 20%; /* #051F3E - Darkest blue */
+    --brand-cyan: 195 100% 65%; /* #00B4FF - Bright cyan */
+    --brand-blue: 215 85% 35%; /* #1565C0 - Medium blue */
+    --brand-purple: 260 60% 55%; /* #7C4DFF - Purple */
+    --brand-light-blue: 200 100% 75%; /* #40C4FF - Light blue */
     
-    --background: var(--dark-bg);
-    --foreground: 0 0% 98%;
+    /* Professional neutrals */
+    --background: 0 0% 100%; /* Clean white background */
+    --foreground: 220 15% 15%; /* Dark text for readability */
     
-    --card: 218 45% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
     
     --popover: var(--card);
     --popover-foreground: var(--foreground);
     
-    --muted: 218 45% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 220 15% 96%; /* Very light gray */
+    --muted-foreground: 220 10% 45%; /* Medium gray text */
     
-    --border: 218 45% 25%;
-    --input: var(--border);
+    --border: 220 15% 90%; /* Light border */
+    --input: 220 15% 95%; /* Input background */
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     
     --ring: var(--accent);
     
-    --radius: 0.75rem;
+    --radius: 0.5rem; /* Professional border radius */
+  }
+  
+  /* Dark mode overrides for sections that need it */
+  .dark-section {
+    --background: 220 25% 8%; /* Very dark blue-gray */
+    --foreground: 0 0% 98%;
+    --card: 220 25% 12%;
+    --card-foreground: 0 0% 95%;
+    --muted: 220 25% 15%;
+    --muted-foreground: 0 0% 70%;
+    --border: 220 25% 20%;
   }
 }
 
@@ -48,36 +62,83 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-['Inter'];
-    background: linear-gradient(135deg, hsl(var(--dark-bg)) 0%, hsl(218 45% 8%) 100%);
+    @apply bg-background text-foreground font-['Inter'] antialiased;
     min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-['Sora'];
+    @apply font-['Sora'] font-semibold;
   }
 }
 
 @layer components {
+  /* Professional glass effects */
   .glass {
-    @apply backdrop-blur-sm bg-white/5 border border-white/10;
+    @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-lg;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-sm bg-slate-900/80 border border-slate-700/50 shadow-xl;
   }
   
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-white/10 hover:border-white/20;
+    @apply transition-all duration-300 hover:bg-white/90 hover:border-white/30 hover:shadow-xl;
   }
   
+  /* Professional gradients based on logo */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-navy via-brand-blue to-brand-cyan bg-clip-text text-transparent;
+  }
+  
+  .gradient-accent {
+    @apply bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple bg-clip-text text-transparent;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-brand-navy/5 via-brand-blue/5 to-brand-cyan/5;
   }
   
   .gradient-border {
-    @apply relative;
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-brand-navy before:via-brand-blue before:to-brand-cyan before:rounded-lg;
   }
   
-  .gradient-border::before {
-    @apply content-[''] absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-primary via-secondary to-accent;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
+  .gradient-border::after {
+    @apply content-[''] absolute inset-[1px] bg-background rounded-[calc(0.5rem-1px)];
   }
+  
+  /* Professional hero section */
+  .hero-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--brand-navy)/.03) 0%, 
+      hsl(var(--brand-blue)/.05) 35%, 
+      hsl(var(--brand-cyan)/.03) 100%);
+  }
+  
+  /* Professional shadows */
+  .shadow-professional {
+    @apply shadow-lg shadow-slate-200/50;
+  }
+  
+  .shadow-professional-dark {
+    @apply shadow-xl shadow-slate-900/25;
+  }
+}
+
+/* Professional animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
 }
