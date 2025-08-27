@@ -8,8 +8,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { BarChart3, Clock, Zap, Target, Search, Filter, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
+import { sb } from "@/integrations/supabase/unsafeClient";
+import type { BenchmarkResult, BenchmarkSuite } from "@/types/supabase";
 
 const Benchmarks = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,23 +18,23 @@ const Benchmarks = () => {
   const [verifiedOnly, setVerifiedOnly] = useState(false);
 
   // Fetch benchmark suites
-  const { data: suites } = useQuery({
+  const { data: suites } = useQuery<BenchmarkSuite[]>({
     queryKey: ['benchmark-suites'],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await sb
         .from('benchmark_suites')
         .select('*')
         .order('title');
       if (error) throw error;
-      return data || [];
+      return (data || []) as BenchmarkSuite[];
     }
   });
 
   // Fetch benchmark results with filters
-  const { data: results, isLoading } = useQuery({
+  const { data: results, isLoading } = useQuery<BenchmarkResult[]>({
     queryKey: ['benchmark-results', selectedSuite, searchTerm, verifiedOnly],
     queryFn: async () => {
-      let query = supabase
+      let query = sb
         .from('benchmark_results')
         .select(`
           *,
@@ -55,7 +56,7 @@ const Benchmarks = () => {
 
       const { data, error } = await query;
       if (error) throw error;
-      return data || [];
+      return (data || []) as BenchmarkResult[];
     }
   });
 

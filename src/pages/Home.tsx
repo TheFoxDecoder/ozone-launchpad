@@ -1,33 +1,37 @@
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Brain, Globe, Target, TrendingUp, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { sb } from "@/integrations/supabase/unsafeClient";
 
 const Home = () => {
   // Fetch live stats from the database
-  const { data: stats } = useQuery({
+  const { data: stats } = useQuery<{
+    suites: number;
+    results: number;
+    latestScore: number;
+    latestMetric: string;
+  }>({
     queryKey: ['home-stats'],
     queryFn: async () => {
       const [suites, results, latestResult] = await Promise.all([
-        supabase.from('benchmark_suites').select('id'),
-        supabase.from('benchmark_results').select('id').eq('is_verified', true),
-        supabase.from('benchmark_results')
+        sb.from('benchmark_suites').select('id'),
+        sb.from('benchmark_results').select('id').eq('is_verified', true),
+        sb.from('benchmark_results')
           .select('value, metric_name')
           .eq('is_verified', true)
           .order('created_at', { ascending: false })
           .limit(1)
-          .single()
+          .maybeSingle()
       ]);
       
       return {
-        suites: suites.data?.length || 0,
-        results: results.data?.length || 0,
-        latestScore: latestResult.data?.value || 0,
-        latestMetric: latestResult.data?.metric_name || 'Score'
+        suites: suites.data ? suites.data.length : 0,
+        results: results.data ? results.data.length : 0,
+        latestScore: latestResult.data ? Number(latestResult.data.value) : 0,
+        latestMetric: latestResult.data?.metric_name ?? 'Score'
       };
     }
   });
