@@ -113,7 +113,10 @@
   }
   
   .gradient-mystical-bg {
-    @apply bg-gradient-to-br from-mystical/5 via-brand-purple/8 to-brand-cyan/5;
+    background: linear-gradient(135deg, 
+      hsl(var(--mystical) / 0.05) 0%, 
+      hsl(var(--brand-purple) / 0.08) 50%, 
+      hsl(var(--brand-cyan) / 0.05) 100%);
   }
   
   .gradient-border {
