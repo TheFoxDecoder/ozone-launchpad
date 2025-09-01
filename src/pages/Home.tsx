@@ -49,122 +49,180 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden relative">
-      {/* AI Matrix Background */}
-      <div className="fixed inset-0 opacity-[0.02] pointer-events-none">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 overflow-hidden relative">
+      {/* Enhanced AI Matrix Background */}
+      <div className="fixed inset-0 opacity-[0.03] pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan via-mystical to-brand-purple animate-matrix-rain"></div>
+        <div className="absolute inset-0 animate-data-flow opacity-50">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-cyan to-transparent"></div>
+          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-mystical to-transparent" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-brand-purple to-transparent" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute right-0 bottom-0 w-px h-full bg-gradient-to-t from-transparent via-mystical to-transparent" style={{ animationDelay: '3s' }}></div>
+        </div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-32 px-4 overflow-hidden">
-        {/* Neural network background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-mystical/10 to-brand-purple/5 rounded-full blur-3xl animate-quantum-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-brand-cyan/8 to-mystical/6 rounded-full blur-3xl animate-quantum-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-gradient-to-r from-brand-blue/6 to-brand-cyan/8 rounded-full blur-2xl animate-neural-pulse"></div>
+      <section className="relative py-24 md:py-32 px-4 overflow-hidden">
+        {/* Enhanced Neural network background */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-16 left-8 w-80 h-80 bg-gradient-to-r from-mystical/15 to-brand-purple/8 rounded-full blur-3xl animate-quantum-float"></div>
+          <div className="absolute bottom-16 right-8 w-96 h-96 bg-gradient-to-r from-brand-cyan/12 to-mystical/10 rounded-full blur-3xl animate-quantum-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-r from-brand-blue/10 to-brand-cyan/12 rounded-full blur-2xl animate-neural-pulse"></div>
+          
+          {/* Floating particles */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-mystical rounded-full animate-quantum-float opacity-60"></div>
+          <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-brand-cyan rounded-full animate-quantum-float opacity-50" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-brand-purple rounded-full animate-quantum-float opacity-70" style={{ animationDelay: '3s' }}></div>
         </div>
         
-        <div className="relative max-w-6xl mx-auto text-center">
-          <div className="flex justify-center mb-8">
-            <AnimatedLogo />
-          </div>
-          
-          <Badge className={`mb-6 glass-apple text-mystical border-mystical/30 animate-slide-in-up ${isVisible ? 'animate-delay-200' : ''} animate-neural-pulse`} variant="secondary">
-            <Sparkles className="w-4 h-4 mr-2 animate-ai-thinking" />
-            Powered by Ozone (O³) Technology
-          </Badge>
-          
-          <h1 className={`text-5xl md:text-7xl font-bold mb-8 leading-tight text-foreground animate-slide-in-up ${isVisible ? 'animate-delay-300' : ''}`}>
-            Welcome to <br />
-            <span className="gradient-neural text-neural-glow">LEAP</span>
-          </h1>
-          
-          <p className={`text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''}`}>
-            Leading Edge AI Platform revolutionizes artificial intelligence with our breakthrough 
-            Ozone (O³) architecture, combining neuromorphic processing with minimal-pass learning 
-            for unprecedented performance and efficiency.
-          </p>
-          
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up ${isVisible ? 'animate-delay-500' : ''}`}>
-            <Button asChild size="lg" className="text-lg px-8 py-6 glass-apple hover-neural group relative overflow-hidden">
-              <Link to="/benchmarks">
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan/20 to-mystical/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-data-flow"></div>
-                <Brain className="mr-2 h-5 w-5 transition-transform group-hover:scale-110 relative z-10" />
-                <span className="relative z-10">Explore Benchmarks</span>
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 relative z-10" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 glass-mystical border-mystical/30 hover-neural group">
-              <Link to="/contact">
-                <Sparkles className="mr-2 h-4 w-4 transition-transform group-hover:rotate-12 animate-ai-thinking" />
-                Request Access
-              </Link>
-            </Button>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center">
+            {/* Animated Logo with enhanced glow */}
+            <div className="flex justify-center mb-12 animate-slide-in-up">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan via-mystical to-brand-purple blur-xl opacity-20 animate-neural-pulse"></div>
+                <AnimatedLogo />
+              </div>
+            </div>
+            
+            <Badge className={`mb-8 glass-apple text-mystical border-mystical/30 px-6 py-2 text-base font-medium animate-slide-in-up ${isVisible ? 'animate-delay-200' : ''} hover-neural group cursor-default`} variant="secondary">
+              <div className="relative flex items-center">
+                <div className="absolute -left-1 w-2 h-2 bg-mystical rounded-full animate-neural-pulse"></div>
+                <Sparkles className="w-4 h-4 mr-2 animate-ai-thinking group-hover:rotate-12 transition-transform duration-500" />
+                Powered by Ozone (O³) Technology
+                <div className="absolute -right-1 w-1.5 h-1.5 bg-brand-cyan rounded-full animate-quantum-float opacity-70" style={{ animationDelay: '0.5s' }}></div>
+              </div>
+            </Badge>
+            
+            <h1 className={`text-6xl md:text-8xl font-black mb-10 leading-[0.9] text-foreground animate-slide-in-up ${isVisible ? 'animate-delay-300' : ''} tracking-tight`}>
+              <span className="block text-4xl md:text-5xl font-normal text-muted-foreground mb-2 animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
+                Welcome to
+              </span>
+              <span className="gradient-neural text-neural-glow relative inline-block">
+                LEAP
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-brand-cyan via-mystical to-brand-purple blur-sm opacity-60 animate-data-flow"></div>
+              </span>
+            </h1>
+            
+            <p className={`text-xl md:text-2xl text-muted-foreground mb-16 max-w-5xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''} font-light`}>
+              Leading Edge AI Platform revolutionizes artificial intelligence with our breakthrough 
+              <span className="gradient-mystical font-medium"> Ozone (O³) architecture</span>, combining neuromorphic processing with minimal-pass learning 
+              for unprecedented performance and efficiency.
+            </p>
+            
+            <div className={`flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-up ${isVisible ? 'animate-delay-500' : ''}`}>
+              <Button asChild size="lg" className="text-lg px-10 py-8 glass-apple hover-neural group relative overflow-hidden border-0 shadow-2xl">
+                <Link to="/benchmarks">
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan/30 to-mystical/30 opacity-0 group-hover:opacity-100 transition-all duration-700 animate-data-flow"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <Brain className="mr-3 h-6 w-6 transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 relative z-10" />
+                  <span className="relative z-10 font-semibold">Explore Benchmarks</span>
+                  <ArrowRight className="ml-3 h-6 w-6 transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110 relative z-10" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="text-lg px-10 py-8 glass-mystical border-mystical/40 hover-neural group backdrop-blur-xl shadow-xl">
+                <Link to="/contact">
+                  <div className="absolute inset-0 bg-gradient-to-r from-mystical/10 to-brand-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <Sparkles className="mr-3 h-5 w-5 transition-all duration-500 group-hover:rotate-180 animate-ai-thinking relative z-10" />
+                  <span className="relative z-10 font-semibold">Request Access</span>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Live Stats */}
-      <section className="py-20 px-4 gradient-mystical-bg relative">
-        <div className="absolute inset-0 glass-apple opacity-50"></div>
-        <div className="max-w-6xl mx-auto relative">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 glass-mystical text-mystical border-mystical/20 animate-neural-pulse" variant="secondary">
-              <TrendingUp className="w-4 h-4 mr-2 animate-ai-thinking" />
-              Real-time Neural Metrics
+      {/* Enhanced Live Stats */}
+      <section className="py-24 px-4 relative overflow-hidden">
+        {/* Sophisticated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-background to-muted/20"></div>
+        <div className="absolute inset-0 glass-apple opacity-60"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-mystical/50 to-transparent animate-data-flow"></div>
+        <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-brand-cyan/50 to-transparent animate-data-flow" style={{ animationDelay: '2s' }}></div>
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-20">
+            <Badge className="mb-6 glass-mystical text-mystical border-mystical/30 px-6 py-3 text-lg font-medium animate-neural-pulse hover-neural group cursor-default" variant="secondary">
+              <div className="relative flex items-center">
+                <TrendingUp className="w-5 h-5 mr-3 animate-ai-thinking group-hover:scale-125 transition-transform duration-500" />
+                Real-time Neural Metrics
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-brand-cyan rounded-full animate-quantum-float opacity-80"></div>
+              </div>
             </Badge>
-            <h2 className="text-3xl font-bold mb-4 text-foreground">
-              Ozone <span className="gradient-mystical">Performance</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+              Ozone <span className="gradient-mystical text-neural-glow">Performance</span>
             </h2>
-            <p className="text-lg text-muted-foreground">Live benchmarks from our neuromorphic architecture</p>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+              Live benchmarks from our neuromorphic architecture, updated in real-time
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-6">
-            <Card className="card-glass-neural hover-lift animate-slide-in-left group">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-navy to-brand-blue mx-auto mb-4 flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
-                  <Target className="h-7 w-7 text-white" />
+          <div className="grid md:grid-cols-4 gap-8">
+            <Card className="card-glass-neural hover-lift animate-slide-in-left group cursor-pointer relative overflow-hidden border-0 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/5 to-brand-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <CardContent className="p-8 text-center relative z-10">
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-navy to-brand-blue mx-auto flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking shadow-xl">
+                    <Target className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-mystical rounded-full animate-quantum-float opacity-70"></div>
                 </div>
-                <div className="text-3xl font-bold gradient-neural mb-2 text-neural-glow">
+                <div className="text-4xl font-black gradient-neural mb-3 text-neural-glow transition-all duration-500 group-hover:scale-110">
                   {stats?.suites || 4}
                 </div>
-                <div className="text-muted-foreground font-medium text-sm">Neural Suites</div>
+                <div className="text-muted-foreground font-semibold text-base tracking-wide">Neural Suites</div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy to-brand-blue transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </CardContent>
             </Card>
             
-            <Card className="card-glass-neural hover-lift animate-slide-in-up animate-delay-100 group">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan mx-auto mb-4 flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
-                  <Cpu className="h-7 w-7 text-white" />
+            <Card className="card-glass-neural hover-lift animate-slide-in-up animate-delay-100 group cursor-pointer relative overflow-hidden border-0 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/5 to-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <CardContent className="p-8 text-center relative z-10">
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan mx-auto flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking shadow-xl">
+                    <Cpu className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-cyan rounded-full animate-quantum-float opacity-70" style={{ animationDelay: '0.5s' }}></div>
                 </div>
-                <div className="text-3xl font-bold gradient-mystical mb-2 text-neural-glow">
+                <div className="text-4xl font-black gradient-mystical mb-3 text-neural-glow transition-all duration-500 group-hover:scale-110">
                   {stats?.models || 3}
                 </div>
-                <div className="text-muted-foreground font-medium text-sm">Active Models</div>
+                <div className="text-muted-foreground font-semibold text-base tracking-wide">Active Models</div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-blue to-brand-cyan transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </CardContent>
             </Card>
             
-            <Card className="card-glass-neural hover-lift animate-slide-in-up animate-delay-200 group">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-cyan to-mystical mx-auto mb-4 flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
-                  <TrendingUp className="h-7 w-7 text-white" />
+            <Card className="card-glass-neural hover-lift animate-slide-in-up animate-delay-200 group cursor-pointer relative overflow-hidden border-0 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-mystical/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <CardContent className="p-8 text-center relative z-10">
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-cyan to-mystical mx-auto flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking shadow-xl">
+                    <TrendingUp className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-mystical rounded-full animate-quantum-float opacity-70" style={{ animationDelay: '1s' }}></div>
                 </div>
-                <div className="text-3xl font-bold gradient-mystical mb-2 text-neural-glow">
+                <div className="text-4xl font-black gradient-mystical mb-3 text-neural-glow transition-all duration-500 group-hover:scale-110">
                   {stats?.results || 3}
                 </div>
-                <div className="text-muted-foreground font-medium text-sm">Verified Results</div>
+                <div className="text-muted-foreground font-semibold text-base tracking-wide">Verified Results</div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-cyan to-mystical transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </CardContent>
             </Card>
             
-            <Card className="card-glass-neural hover-lift animate-slide-in-right animate-delay-300 group">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-mystical to-brand-purple mx-auto mb-4 flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
-                  <Zap className="h-7 w-7 text-white" />
+            <Card className="card-glass-neural hover-lift animate-slide-in-right animate-delay-300 group cursor-pointer relative overflow-hidden border-0 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-mystical/5 to-brand-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <CardContent className="p-8 text-center relative z-10">
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-mystical to-brand-purple mx-auto flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking shadow-xl">
+                    <Zap className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-brand-purple rounded-full animate-quantum-float opacity-70" style={{ animationDelay: '1.5s' }}></div>
                 </div>
-                <div className="text-3xl font-bold gradient-neural mb-2 text-neural-glow">
+                <div className="text-4xl font-black gradient-neural mb-3 text-neural-glow transition-all duration-500 group-hover:scale-110">
                   {stats?.latestScore || 96.8}
                 </div>
-                <div className="text-muted-foreground font-medium text-sm">Latest {stats?.latestMetric || 'Score'}</div>
+                <div className="text-muted-foreground font-semibold text-base tracking-wide">Latest {stats?.latestMetric || 'Score'}</div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-mystical to-brand-purple transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </CardContent>
             </Card>
           </div>
