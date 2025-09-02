@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { sb } from "@/integrations/supabase/unsafeClient";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,15 +28,31 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { error } = await sb.from('access_requests').insert({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || null,
+        message: formData.message,
+        request_type: formData.interest || 'general'
+      });
+
+      if (error) throw error;
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       toast({
         title: "Message Sent!",
         description: "Thank you for your interest in LEAP. We'll be in touch soon.",
       });
-    }, 2000);
+    } catch (error) {
+      setIsSubmitting(false);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleChange = (field: string, value: string) => {

@@ -91,3 +91,41 @@ export interface BlogPost {
   updated_at?: string;
   author?: { name?: string | null } | null;
 }
+
+export interface Newsletter {
+  id: string;
+  email: string;
+  name?: string;
+  status: 'subscribed' | 'unsubscribed' | 'bounced';
+  subscription_source?: string;
+  preferences?: any;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ApiKey {
+  id: string;
+  user_id: string;
+  name: string;
+  key_hash: string;
+  key_prefix: string;
+  permissions?: any;
+  usage_count?: number;
+  rate_limit?: number;
+  expires_at?: string;
+  is_active?: boolean;
+  last_used_at?: string;
+  created_at: string;
+  updated_at: string;
+  full_key?: string; // Only present when creating a new key
+}
+
+export type UserRole = 'admin' | 'editor' | 'user' | 'researcher';
+
+export interface UserRoles {
+  id: string;
+  user_id: string;
+  role: UserRole;
+  granted_by?: string;
+  granted_at: string;
+}
