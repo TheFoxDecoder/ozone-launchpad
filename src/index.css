@@ -5,25 +5,25 @@
 
 @layer base {
   :root {
-    /* Dark gradient background inspired by logo colors */
-    --background: 230 60% 8%;
-    --foreground: 210 40% 98%;
-    --card: 230 50% 12%;
-    --card-foreground: 210 40% 98%;
-    --popover: 230 50% 12%;
-    --popover-foreground: 210 40% 98%;
+    /* Light gradient background inspired by logo colors */
+    --background: 210 40% 98%;
+    --foreground: 230 60% 15%;
+    --card: 200 30% 95%;
+    --card-foreground: 230 60% 15%;
+    --popover: 200 30% 95%;
+    --popover-foreground: 230 60% 15%;
     --primary: 180 70% 60%;
-    --primary-foreground: 230 60% 8%;
-    --secondary: 225 70% 25%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 225 40% 18%;
-    --muted-foreground: 210 20% 70%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 200 40% 90%;
+    --secondary-foreground: 230 60% 15%;
+    --muted: 200 30% 88%;
+    --muted-foreground: 230 40% 40%;
     --accent: 280 60% 55%;
-    --accent-foreground: 230 60% 8%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 225 30% 25%;
-    --input: 225 40% 18%;
+    --border: 200 30% 85%;
+    --input: 200 30% 88%;
     --ring: 180 70% 60%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
@@ -32,12 +32,12 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Brand Colors - Updated to match triangular logo */
-    --brand-navy: 230 60% 15%;
-    --brand-blue: 210 80% 50%;
-    --brand-cyan: 180 70% 60%;
-    --brand-purple: 280 60% 55%;
-    --brand-light-blue: 200 70% 75%;
+    /* Brand Colors - Lighter versions matching triangular logo */
+    --brand-navy: 230 60% 25%;
+    --brand-blue: 210 80% 60%;
+    --brand-cyan: 180 70% 65%;
+    --brand-purple: 280 60% 65%;
+    --brand-light-blue: 200 70% 80%;
     
     /* Mystical AI Colors */
     --mystical: 249 58% 65%;
@@ -85,11 +85,11 @@
   body {
     @apply text-foreground;
     background: linear-gradient(135deg, 
-      hsl(var(--brand-navy)) 0%, 
+      hsl(var(--brand-light-blue) / 0.3) 0%, 
       hsl(var(--background)) 25%,
-      hsl(var(--brand-blue) / 0.8) 50%,
-      hsl(var(--brand-purple) / 0.6) 75%,
-      hsl(var(--brand-navy)) 100%);
+      hsl(var(--brand-cyan) / 0.2) 50%,
+      hsl(var(--brand-purple) / 0.15) 75%,
+      hsl(var(--brand-blue) / 0.2) 100%);
     background-attachment: fixed;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
