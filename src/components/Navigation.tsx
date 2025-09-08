@@ -13,7 +13,8 @@ import {
   User,
   Settings,
   LogOut,
-  Crown
+  Crown,
+  Target
 } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
 import {
@@ -33,6 +34,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
+    { name: 'About', path: '/about', icon: Target },
     { name: 'Ozone', path: '/ozone', icon: Brain },
     { name: 'Benchmarks', path: '/benchmarks', icon: BarChart3 },
     { name: 'Blog', path: '/blog', icon: BookOpen },
