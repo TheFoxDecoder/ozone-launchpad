@@ -5,25 +5,25 @@
 
 @layer base {
   :root {
-    /* Light gradient background inspired by logo colors */
-    --background: 210 40% 98%;
+    /* Colorful gradient background with reduced white */
+    --background: 220 45% 92%;
     --foreground: 230 60% 15%;
-    --card: 200 30% 95%;
+    --card: 210 35% 88%;
     --card-foreground: 230 60% 15%;
-    --popover: 200 30% 95%;
+    --popover: 200 40% 85%;
     --popover-foreground: 230 60% 15%;
     --primary: 180 70% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 200 40% 90%;
+    --primary-foreground: 230 70% 15%;
+    --secondary: 200 50% 82%;
     --secondary-foreground: 230 60% 15%;
-    --muted: 200 30% 88%;
+    --muted: 200 40% 80%;
     --muted-foreground: 230 40% 40%;
     --accent: 280 60% 55%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 230 70% 15%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 200 30% 85%;
-    --input: 200 30% 88%;
+    --border: 200 35% 75%;
+    --input: 200 40% 78%;
     --ring: 180 70% 60%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
@@ -44,10 +44,10 @@
     --mystical-light: 249 58% 75%;
     --mystical-dark: 249 58% 45%;
     
-    /* Glass Colors */
-    --glass-bg: 0 0% 100% / 0.08;
-    --glass-border: 0 0% 100% / 0.15;
-    --glass-shadow: 0 0% 0% / 0.1;
+    /* Glass Colors - reduced white usage */
+    --glass-bg: 200 30% 85% / 0.12;
+    --glass-border: 180 40% 70% / 0.20;
+    --glass-shadow: 230 50% 20% / 0.15;
   }
 
   .dark {
@@ -85,11 +85,12 @@
   body {
     @apply text-foreground;
     background: linear-gradient(135deg, 
-      hsl(var(--brand-light-blue) / 0.3) 0%, 
-      hsl(var(--background)) 25%,
-      hsl(var(--brand-cyan) / 0.2) 50%,
-      hsl(var(--brand-purple) / 0.15) 75%,
-      hsl(var(--brand-blue) / 0.2) 100%);
+      hsl(var(--brand-light-blue) / 0.6) 0%, 
+      hsl(var(--brand-cyan) / 0.4) 20%,
+      hsl(var(--background)) 40%,
+      hsl(var(--brand-purple) / 0.3) 65%,
+      hsl(var(--brand-blue) / 0.5) 85%,
+      hsl(var(--mystical) / 0.3) 100%);
     background-attachment: fixed;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
@@ -106,19 +107,19 @@
     border: 1px solid hsla(var(--glass-border));
     box-shadow: 
       0 8px 32px hsla(var(--glass-shadow)),
-      inset 0 1px 0 hsla(0 0% 100% / 0.1);
+      inset 0 1px 0 hsla(var(--brand-cyan) / 0.1);
   }
   
   .glass-mystical {
     backdrop-filter: blur(16px) saturate(180%);
     background: linear-gradient(135deg, 
-      hsla(var(--mystical) / 0.1) 0%,
-      hsla(var(--brand-purple) / 0.05) 50%,
-      hsla(var(--brand-cyan) / 0.08) 100%);
-    border: 1px solid hsla(var(--mystical) / 0.2);
+      hsla(var(--mystical) / 0.15) 0%,
+      hsla(var(--brand-purple) / 0.12) 50%,
+      hsla(var(--brand-cyan) / 0.18) 100%);
+    border: 1px solid hsla(var(--mystical) / 0.3);
     box-shadow: 
       0 8px 32px hsla(var(--mystical) / 0.3),
-      inset 0 1px 0 hsla(0 0% 100% / 0.1);
+      inset 0 1px 0 hsla(var(--brand-cyan) / 0.2);
   }
   
   .glass-neural {
@@ -241,10 +242,11 @@
 
   /* Glass card variants */
   .card-glass-primary {
-    @apply glass-apple border border-white/10 shadow-2xl;
+    @apply glass-apple border shadow-2xl;
     background: linear-gradient(135deg, 
-      hsla(0 0% 100% / 0.1) 0%,
-      hsla(0 0% 100% / 0.05) 100%);
+      hsla(var(--brand-cyan) / 0.12) 0%,
+      hsla(var(--brand-light-blue) / 0.08) 100%);
+    border-color: hsla(var(--brand-cyan) / 0.2);
   }
   
   .card-glass-neural {
