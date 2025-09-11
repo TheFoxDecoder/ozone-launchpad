@@ -5,26 +5,26 @@
 
 @layer base {
   :root {
-    /* Colorful gradient background with reduced white */
+    /* Colorful gradient background with 50% white and 10% purple integration */
     --background: 220 45% 92%;
     --foreground: 230 60% 15%;
-    --card: 210 35% 88%;
+    --card: 280 20% 88%;
     --card-foreground: 230 60% 15%;
-    --popover: 200 40% 85%;
+    --popover: 280 25% 85%;
     --popover-foreground: 230 60% 15%;
-    --primary: 180 70% 60%;
-    --primary-foreground: 230 70% 15%;
-    --secondary: 200 50% 82%;
+    --primary: 280 60% 55%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 280 30% 82%;
     --secondary-foreground: 230 60% 15%;
-    --muted: 200 40% 80%;
-    --muted-foreground: 230 40% 40%;
+    --muted: 280 25% 80%;
+    --muted-foreground: 280 40% 40%;
     --accent: 280 60% 55%;
-    --accent-foreground: 230 70% 15%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 200 35% 75%;
-    --input: 200 40% 78%;
-    --ring: 180 70% 60%;
+    --border: 280 25% 75%;
+    --input: 280 30% 78%;
+    --ring: 280 60% 55%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -32,49 +32,49 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Brand Colors - Lighter versions matching triangular logo */
+    /* Brand Colors - Enhanced with purple integration */
     --brand-navy: 230 60% 25%;
     --brand-blue: 210 80% 60%;
     --brand-cyan: 180 70% 65%;
     --brand-purple: 280 60% 65%;
     --brand-light-blue: 200 70% 80%;
     
-    /* Mystical AI Colors */
-    --mystical: 249 58% 65%;
-    --mystical-light: 249 58% 75%;
-    --mystical-dark: 249 58% 45%;
+    /* Mystical AI Colors - Purple enhanced */
+    --mystical: 280 58% 65%;
+    --mystical-light: 280 58% 75%;
+    --mystical-dark: 280 58% 45%;
     
-    /* Glass Colors - reduced white usage */
-    --glass-bg: 200 30% 85% / 0.12;
-    --glass-border: 180 40% 70% / 0.20;
-    --glass-shadow: 230 50% 20% / 0.15;
+    /* Glass Colors - Purple tinted with white balance */
+    --glass-bg: 280 20% 85% / 0.15;
+    --glass-border: 280 40% 70% / 0.25;
+    --glass-shadow: 280 50% 20% / 0.20;
   }
 
   .dark {
-    /* Even darker theme for dark mode */
-    --background: 230 70% 4%;
+    /* Dark theme with purple integration and white balance */
+    --background: 280 70% 4%;
     --foreground: 210 40% 98%;
-    --card: 230 60% 8%;
+    --card: 280 60% 8%;
     --card-foreground: 210 40% 98%;
-    --popover: 230 60% 8%;
+    --popover: 280 60% 8%;
     --popover-foreground: 210 40% 98%;
-    --primary: 180 70% 60%;
-    --primary-foreground: 230 70% 4%;
-    --secondary: 225 70% 20%;
+    --primary: 280 70% 60%;
+    --primary-foreground: 280 70% 4%;
+    --secondary: 280 70% 20%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 225 50% 12%;
+    --muted: 280 50% 12%;
     --muted-foreground: 210 20% 70%;
     --accent: 280 60% 55%;
-    --accent-foreground: 230 70% 4%;
+    --accent-foreground: 280 70% 4%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 225 40% 18%;
-    --input: 225 50% 12%;
-    --ring: 180 70% 60%;
+    --border: 280 40% 18%;
+    --input: 280 50% 12%;
+    --ring: 280 70% 60%;
     
-    --glass-bg: 230 60% 8% / 0.15;
-    --glass-border: 180 70% 60% / 0.1;
-    --glass-shadow: 0 0% 0% / 0.3;
+    --glass-bg: 280 60% 8% / 0.20;
+    --glass-border: 280 70% 60% / 0.15;
+    --glass-shadow: 280 30% 0% / 0.4;
   }
 }
 
@@ -85,12 +85,14 @@
   body {
     @apply text-foreground;
     background: linear-gradient(135deg, 
-      hsl(var(--brand-light-blue) / 0.6) 0%, 
-      hsl(var(--brand-cyan) / 0.4) 20%,
-      hsl(var(--background)) 40%,
-      hsl(var(--brand-purple) / 0.3) 65%,
-      hsl(var(--brand-blue) / 0.5) 85%,
-      hsl(var(--mystical) / 0.3) 100%);
+      hsl(var(--brand-purple) / 0.4) 0%, 
+      hsl(var(--brand-light-blue) / 0.5) 15%,
+      hsl(210 40% 98% / 0.5) 30%,
+      hsl(var(--brand-cyan) / 0.3) 45%,
+      hsl(var(--mystical) / 0.4) 60%,
+      hsl(210 40% 98% / 0.4) 75%,
+      hsl(var(--brand-purple) / 0.5) 90%,
+      hsl(var(--brand-blue) / 0.3) 100%);
     background-attachment: fixed;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
@@ -113,13 +115,14 @@
   .glass-mystical {
     backdrop-filter: blur(16px) saturate(180%);
     background: linear-gradient(135deg, 
-      hsla(var(--mystical) / 0.15) 0%,
-      hsla(var(--brand-purple) / 0.12) 50%,
-      hsla(var(--brand-cyan) / 0.18) 100%);
-    border: 1px solid hsla(var(--mystical) / 0.3);
+      hsla(var(--mystical) / 0.20) 0%,
+      hsl(210 40% 98% / 0.15) 30%,
+      hsla(var(--brand-purple) / 0.18) 70%,
+      hsla(var(--brand-cyan) / 0.15) 100%);
+    border: 1px solid hsla(var(--mystical) / 0.35);
     box-shadow: 
-      0 8px 32px hsla(var(--mystical) / 0.3),
-      inset 0 1px 0 hsla(var(--brand-cyan) / 0.2);
+      0 8px 32px hsla(var(--mystical) / 0.35),
+      inset 0 1px 0 hsla(var(--brand-purple) / 0.25);
   }
   
   .glass-neural {
