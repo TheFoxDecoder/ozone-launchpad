@@ -94,9 +94,9 @@ const Home = () => {
               </div>
             </Badge>
             
-            <h1 className={`text-6xl md:text-8xl font-black mb-10 leading-[0.9] text-foreground animate-slide-in-up ${isVisible ? 'animate-delay-300' : ''} tracking-tight`}>
-              <span className="block text-4xl md:text-5xl font-normal text-muted-foreground mb-2 animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
-                Welcome to
+            <h1 className={`text-5xl md:text-7xl font-black mb-6 leading-[0.95] text-foreground animate-slide-in-up ${isVisible ? 'animate-delay-300' : ''} tracking-tight`}>
+              <span className="block text-2xl md:text-3xl font-normal text-muted-foreground mb-4 animate-slide-in-up" style={{ animationDelay: '0.4s' }}>
+                Introducing
               </span>
               <span className="gradient-neural text-neural-glow relative inline-block">
                 LEAP
@@ -104,10 +104,15 @@ const Home = () => {
               </span>
             </h1>
             
-            <p className={`text-xl md:text-2xl text-muted-foreground mb-16 max-w-5xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''} font-light`}>
-              Leading Edge AI Platform revolutionizes artificial intelligence with our breakthrough 
-              <span className="gradient-mystical font-medium"> Ozone (O³) architecture</span>, combining neuromorphic processing with minimal-pass learning 
-              for unprecedented performance and efficiency.
+            <p className={`text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''} font-light`}>
+              We're building <span className="gradient-mystical font-medium">digital intelligence that actually thinks</span>.
+              Not a tool. Not an AI employee. Not another model wrapped in fancy marketing.
+            </p>
+            
+            <p className={`text-lg md:text-xl text-muted-foreground/80 mb-16 max-w-4xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''} font-light`}>
+              LEAP is building intelligent structures that businesses can subscribe to — 
+              the same way they subscribe to infrastructure, computing, or security. 
+              Except this isn't software. <span className="text-foreground font-medium">It's cognition.</span>
             </p>
             
             <div className={`flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-up ${isVisible ? 'animate-delay-500' : ''}`}>
@@ -229,8 +234,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Ozone Technology Section */}
-      <section className="py-20 px-4 bg-white relative overflow-hidden">
+      {/* What LEAP Does Section */}
+      <section className="py-20 px-4 bg-background relative overflow-hidden">
         <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-l from-mystical/5 to-transparent rounded-full blur-3xl animate-quantum-float"></div>
         
         <div className="max-w-6xl mx-auto">
@@ -238,34 +243,40 @@ const Home = () => {
             <div className="animate-slide-in-left">
               <Badge className="mb-4 glass-apple text-mystical border-mystical/20 animate-neural-pulse" variant="secondary">
                 <Brain className="w-4 h-4 mr-2 animate-ai-thinking" />
-                Next-Gen AI
+                Intelligence as Infrastructure
               </Badge>
               <h2 className="text-4xl font-bold mb-6 text-foreground">
-                Ozone (O³) <span className="gradient-mystical">Architecture</span>
+                What This <span className="gradient-mystical">Really Means</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Our revolutionary Ozone technology transcends traditional AI limitations through 
-                neuromorphic processing, minimal-pass learning, and organic computation that 
-                thinks like the human brain but operates at silicon speed.
+                LEAP focuses on one thing: teaching organizations how to use 
+                <span className="gradient-mystical font-medium"> digital intelligence as a capability</span>, not a feature.
+                We're not in the business of selling tools. We're in the business of intelligence itself.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 group hover-lift">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-brand-navy to-brand-blue flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
                     <Brain className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">90% reduction in training data requirements</span>
+                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">Intelligence as a structure, not a model</span>
                 </div>
                 <div className="flex items-center space-x-3 group hover-lift">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
                     <Zap className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">15x energy efficiency improvement</span>
+                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">Plug into shared cognitive frameworks</span>
                 </div>
                 <div className="flex items-center space-x-3 group hover-lift">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-brand-cyan to-mystical flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
                     <Network className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">Distributed neuromorphic processing</span>
+                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">Adapts to your systems, workflows, and decisions</span>
+                </div>
+                <div className="flex items-center space-x-3 group hover-lift">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-mystical to-brand-purple flex items-center justify-center animate-neural-pulse group-hover:animate-ai-thinking">
+                    <Globe className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-foreground font-medium group-hover:gradient-neural transition-all duration-300">Grows with your business, not as a dependency</span>
                 </div>
               </div>
             </div>
@@ -274,35 +285,35 @@ const Home = () => {
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl gradient-mystical flex items-center text-neural-glow">
                   <Sparkles className="w-6 h-6 mr-2 text-mystical animate-neural-pulse" />
-                  Core Technologies
+                  The LEAP Difference
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="p-6 rounded-lg glass-apple border border-brand-blue/20 hover-lift group">
                   <div className="flex items-center mb-3">
                     <Eye className="w-5 h-5 mr-2 text-brand-navy animate-ai-thinking" />
-                    <h4 className="font-semibold text-brand-navy">Eve Cycles</h4>
+                    <h4 className="font-semibold text-brand-navy">Not Just Tools</h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Self-evolving learning cycles that continuously adapt and optimize without supervision
+                    Companies plug into our intelligence structure instead of hiring "AI" — it adapts to their systems
                   </p>
                 </div>
                 <div className="p-6 rounded-lg glass-apple border border-brand-cyan/20 hover-lift group">
                   <div className="flex items-center mb-3">
                     <Network className="w-5 h-5 mr-2 text-brand-blue animate-ai-thinking" />
-                    <h4 className="font-semibold text-brand-blue">Neural Routing</h4>
+                    <h4 className="font-semibold text-brand-blue">Connected Industries</h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Dynamic pathways that mirror biological neural networks for optimal processing
+                    Shared cognitive frameworks that connect industries together for collective intelligence
                   </p>
                 </div>
                 <div className="p-6 rounded-lg glass-apple border border-mystical/20 hover-lift group">
                   <div className="flex items-center mb-3">
                     <Cpu className="w-5 h-5 mr-2 text-mystical animate-ai-thinking" />
-                    <h4 className="font-semibold text-mystical">Organic Processors</h4>
+                    <h4 className="font-semibold text-mystical">New Architecture</h4>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Custom silicon designed specifically for neuromorphic computation patterns
+                    Built on a decade of research — new architecture, new methods, new thinking
                   </p>
                 </div>
               </CardContent>
@@ -338,7 +349,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-background relative overflow-hidden">
         <div className="absolute top-10 left-10 w-32 h-32 bg-mystical/10 rounded-full blur-2xl animate-quantum-float"></div>
         <div className="absolute bottom-10 right-10 w-48 h-48 bg-brand-cyan/10 rounded-full blur-2xl animate-quantum-float" style={{ animationDelay: '3s' }}></div>
         
@@ -354,25 +365,27 @@ const Home = () => {
               </div>
               
               <h2 className="text-3xl font-bold mb-4 text-foreground">
-                Ready to Experience <span className="gradient-mystical text-neural-glow">Ozone</span>?
+                Building the <span className="gradient-mystical text-neural-glow">Future of Intelligence</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Join leading researchers and enterprises leveraging the future of AI with LEAP's 
-                revolutionary Ozone architecture.
+              <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
+                If you're working in frontier computing, AGI, or building systems that need real intelligence — reach out.
+              </p>
+              <p className="text-lg text-muted-foreground/70 mb-8">
+                More details coming soon.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="glass-apple hover-neural group relative overflow-hidden">
                   <Link to="/contact">
                     <div className="absolute inset-0 bg-gradient-to-r from-mystical/20 to-brand-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-data-flow"></div>
                     <Sparkles className="mr-2 h-4 w-4 transition-transform group-hover:rotate-12 animate-ai-thinking relative z-10" />
-                    <span className="relative z-10">Request Access</span>
+                    <span className="relative z-10">Get in Touch</span>
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="glass-mystical border-mystical/30 hover-neural group">
-                  <Link to="/ozone">
+                  <Link to="/about">
                     <Brain className="mr-2 h-4 w-4 transition-transform group-hover:scale-110 animate-ai-thinking" />
-                    Learn About Ozone
+                    Learn More About LEAP
                   </Link>
                 </Button>
               </div>
