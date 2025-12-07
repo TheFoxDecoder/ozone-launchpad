@@ -120,21 +120,26 @@ const About = () => {
           <section className="text-center mb-20">
             <Badge className={`mb-8 glass-apple text-mystical border-mystical/30 px-6 py-2 text-base font-medium animate-slide-in-up ${isVisible ? 'animate-delay-200' : ''}`} variant="secondary">
               <Sparkles className="w-4 h-4 mr-2" />
-              Our Purpose & Vision
+              A Decade in the Making
             </Badge>
             
             <h1 className={`text-5xl md:text-7xl font-black mb-10 leading-tight gradient-neural animate-slide-in-up ${isVisible ? 'animate-delay-300' : ''}`}>
-              Intelligence for
+              Intelligence That
               <br />
-              <span className="text-mystical">Humanity's Future</span>
+              <span className="text-mystical">Actually Thinks</span>
             </h1>
             
-            <p className={`text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''}`}>
-              We're building AI that learns with minimal data and maximizes understanding—creating tools that solve critical challenges safely, sustainably, and for the benefit of all life on Earth and beyond.
+            <p className={`text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''} mb-6`}>
+              LEAP is the company built around one idea: create a form of digital intelligence that truly reasons — not just responds.
+            </p>
+            
+            <p className={`text-lg text-muted-foreground/80 max-w-3xl mx-auto leading-relaxed animate-slide-in-up ${isVisible ? 'animate-delay-400' : ''}`}>
+              This is the foundation built quietly for years — new architecture, new methods, new thinking.
+              We're building intelligent structures that businesses can subscribe to, like infrastructure or security. Except this isn't software. It's cognition.
             </p>
           </section>
 
-          {/* Vision & Mission */}
+          {/* What LEAP Is */}
           <section className="mb-20">
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               <Card className={`card-glass-primary hover-neural animate-slide-in-up ${isVisible ? 'animate-delay-500' : ''}`}>
@@ -143,12 +148,15 @@ const About = () => {
                     <div className="p-3 rounded-xl bg-gradient-to-r from-mystical/20 to-brand-purple/20 border border-mystical/30">
                       <Eye className="h-6 w-6 text-mystical" />
                     </div>
-                    <CardTitle className="text-2xl gradient-neural">Company Vision</CardTitle>
+                    <CardTitle className="text-2xl gradient-neural">What LEAP Is</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    A world where intelligence, science, and technology converge to solve humanity's most critical challenges—safely, sustainably, and for the benefit of all life on Earth and beyond.
+                  <p className="text-lg leading-relaxed text-muted-foreground mb-4">
+                    LEAP isn't in the business of selling tools. We're in the business of <span className="text-foreground font-medium">intelligence itself</span>.
+                  </p>
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    We design intelligence as a structure, not a model. Companies plug into that structure instead of hiring "AI" — it adapts to their systems, workflows, and decisions.
                   </p>
                 </CardContent>
               </Card>
@@ -159,19 +167,19 @@ const About = () => {
                     <div className="p-3 rounded-xl bg-gradient-to-r from-brand-cyan/20 to-mystical/20 border border-brand-cyan/30">
                       <Target className="h-6 w-6 text-brand-cyan" />
                     </div>
-                    <CardTitle className="text-2xl gradient-neural">Company Mission</CardTitle>
+                    <CardTitle className="text-2xl gradient-neural">Our Focus</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <p className="text-base text-muted-foreground">
-                      <span className="font-semibold text-foreground">Develop</span> general-purpose intelligence systems that learn with minimal data and maximize understanding.
+                      <span className="font-semibold text-foreground">Capability, Not Feature</span> — Teaching organizations how to use digital intelligence as a core capability.
                     </p>
                     <p className="text-base text-muted-foreground">
-                      <span className="font-semibold text-foreground">Apply</span> mathematics and science through Leap to create real-world solutions in energy, climate, space exploration, and cyber safety.
+                      <span className="font-semibold text-foreground">Connected Industries</span> — Linking organizations through shared cognitive frameworks.
                     </p>
                     <p className="text-base text-muted-foreground">
-                      <span className="font-semibold text-foreground">Build</span> tools that empower humans, protect the planet, and accelerate discovery—without causing harm.
+                      <span className="font-semibold text-foreground">Growing Intelligence</span> — Systems that grow with the business instead of becoming another dependency.
                     </p>
                   </div>
                 </CardContent>
