@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/components/AuthProvider";
 import Navigation from "@/components/Navigation";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Ozone from "./pages/Ozone";
 import Benchmarks from "./pages/Benchmarks";
 import Blog from "./pages/Blog";
