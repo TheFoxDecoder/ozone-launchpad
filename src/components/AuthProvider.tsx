@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
-import { supabase } from '@/integrations/supabase/client';
+import { sb } from '@/integrations/supabase/unsafeClient';
 import type { Profile, UserRole } from '@/types/supabase';
 
 interface AuthContextType {
@@ -34,20 +34,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data: profileData } = await supabase
+      const { data: profileData } = await sb
         .from('profiles')
         .select('*')
         .eq('user_id', userId)
         .maybeSingle();
 
-      const { data: roleData } = await supabase
+      const { data: roleData } = await sb
         .from('user_roles')
         .select('role')
         .eq('user_id', userId)
         .maybeSingle();
 
       setProfile(profileData as Profile);
-      setUserRole((roleData?.role as UserRole) || 'user');
+      setUserRole(roleData?.role as UserRole || 'user');
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
@@ -55,8 +55,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     // Set up auth state listener FIRST
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+    const { data: { subscription } } = sb.auth.onAuthStateChange(
+      (event: string, session: Session | null) => {
         setSession(session);
         setUser(session?.user ?? null);
         
@@ -74,7 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
 
     // THEN check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    sb.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -91,7 +91,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signUp = async (email: string, password: string, firstName?: string, lastName?: string) => {
     const redirectUrl = `${window.location.origin}/`;
     
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await sb.auth.signUp({
       email,
       password,
       options: {
@@ -105,7 +105,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Create profile if signup successful
     if (data.user && !error) {
-      const { error: profileError } = await supabase
+      const { error: profileError } = await sb
         .from('profiles')
         .insert({
           user_id: data.user.id,
@@ -117,7 +117,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       // Give default user role
       if (!profileError) {
-        await supabase
+        await sb
           .from('user_roles')
           .insert({
             user_id: data.user.id,
@@ -130,18 +130,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await sb.auth.signInWithPassword({ email, password });
     return { error };
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    await sb.auth.signOut();
   };
 
   const updateProfile = async (updates: Partial<Profile>) => {
     if (!user) return { error: 'Not authenticated' };
 
-    const { error } = await supabase
+    const { error } = await sb
       .from('profiles')
       .upsert({ ...updates, user_id: user.id })
       .eq('user_id', user.id);

@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { sb } from '@/integrations/supabase/unsafeClient';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 import type { ApiKey } from '@/types/supabase';
@@ -47,7 +47,7 @@ const Dashboard = () => {
     queryKey: ['api-keys', user?.id],
     queryFn: async () => {
       if (!user) return [];
-      const { data, error } = await supabase
+      const { data, error } = await sb
         .from('api_keys')
         .select('*')
         .eq('user_id', user.id)
@@ -55,7 +55,7 @@ const Dashboard = () => {
         .order('created_at', { ascending: false });
       
       if (error) throw error;
-      return data || [];
+      return (data || []) as ApiKey[];
     },
     enabled: !!user
   });
@@ -65,7 +65,7 @@ const Dashboard = () => {
     queryKey: ['access-requests', user?.email],
     queryFn: async () => {
       if (!user?.email) return [];
-      const { data, error } = await supabase
+      const { data, error } = await sb
         .from('access_requests')
         .select('*')
         .eq('email', user.email)
@@ -95,7 +95,7 @@ const Dashboard = () => {
       const hashArray = Array.from(new Uint8Array(keyHash));
       const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
       
-      const { data, error } = await supabase
+      const { data, error } = await sb
         .from('api_keys')
         .insert({
           user_id: user.id,
@@ -108,7 +108,7 @@ const Dashboard = () => {
         .single();
       
       if (error) throw error;
-      return { ...data, full_key: fullKey };
+      return { ...(data as ApiKey), full_key: fullKey };
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['api-keys'] });
@@ -131,7 +131,7 @@ const Dashboard = () => {
   // Delete API key mutation
   const deleteApiKeyMutation = useMutation({
     mutationFn: async (keyId: string) => {
-      const { error } = await supabase
+      const { error } = await sb
         .from('api_keys')
         .update({ is_active: false })
         .eq('id', keyId);
